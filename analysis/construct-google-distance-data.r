@@ -4,7 +4,7 @@
 # June 22, 2016
 #########################################
 rm(list=ls())
-pkg = list("Rcpp","haven","ggmap","plyr","RJSONIO","dplyr","doParallel")
+pkg = list("Rcpp","haven","ggmap","plyr","RJSONIO","dplyr","doParallel","ggplot2")
 invisible(lapply(pkg, require, character.only = TRUE))
 
 setwd("~/Dropbox/Projects/hospital-quality-ambulance/analysis/")
@@ -17,4 +17,6 @@ GoogleDistances <-  foreach (iter=1:N.Iter,.combine=rbind)  %do%
   GoogleDistances50.H25
 }
 
+write.dta(GoogleDistances,file="~/Dropbox/Projects/hcup-ed/data/google-distances.dta")
+save(GoogleDistances,file="~/Dropbox/Projects/hcup-ed/data/google-distances.Rdata")
 
